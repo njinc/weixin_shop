@@ -422,7 +422,7 @@ div.order_cancel_box p span {color: #f34; font-weight: bold;}
 .default h6 { font-size: 10px; }
 
 .major .list {overflow: hidden; display:block; margin:0 10px;}
-.major .list li { margin:10px 5px; float:left; width:45%; text-align:center; -webkit-box-shadow:0 0 5px #ccc; background:#fff;}
+.major .list li { margin:10px 5px; float:left; width:45%; text-align:center; -webkit-box-shadow:0 0 5px #ccc; background:#fff;  border-radius: 15px}
 .news .major .list li { width: 30%;}
 .major .list li span.show_good{display: none;}
 .major .pic {margin: 0 auto; text-align:center;}
