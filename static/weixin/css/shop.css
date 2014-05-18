@@ -427,6 +427,7 @@ div.order_cancel_box p span {color: #f34; font-weight: bold;}
 .major .list li span.show_good{display: none;}
 .major .pic {margin: 0 auto; text-align:center;}
 .major .pic img { width:100px;height:100px;}
+.news .major .pic img { width:80px;height:100px;}
 .major .pic a { display: block; text-align:center; margin:0 3px; padding: 8px 6px;}
 .major h3 { color:#ababab; text-align: center; overflow: hidden; margin: 10px 0 0 0; line-height: 18px; font-weight: normal; font-size: 12px; height:36px;}
 .major h3 a { color: #646665; text-decoration: none; }
