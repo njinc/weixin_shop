@@ -1,0 +1,41 @@
+
+
+
+<div id="head">
+	<img height="50" src="__PUBLIC__/images/store_logo.jpg">
+</div>
+<div id="nav">
+	<ul class="navlist">
+    	<li id="n_0">
+    	<span ></span>
+        	<ul class="submenu">
+ 
+        	<volist name='index_cate_list' id='vo' >
+        	   <li>
+                    <a href="{:U('book/cate',array('cid'=>$vo['id']))}" class="none_ico"> {$vo.name}</a>
+                </li>
+          
+            </volist>
+             
+            
+            </ul>
+        </li>
+        <li class="r active" id="n_1"><a href="{:U('index/index')}"><span></span></a></li>
+        <li class="r" id="n_2"><a href="{:U('user/index')}"><span></span></a></li>
+        <li class="r" id="n_3"><a href="{:U('shopcart/index')}"><span></span></a><i></i></li>
+    </ul>
+    <script type="text/javascript">
+    	$(".navlist > li#n_0").click(function(){
+			$(this).toggleClass("active");
+			
+		});
+		$(".navlist > li.r a").each(function() {
+            href="index.php-app=member&act=login&ret_url=-index.php-app=member.htm"+$(this).attr("href");
+			whref=window.location.href;
+			if(whref.indexOf(href)!='-1'){
+				$(this).parent("li").addClass("active");
+			}
+        });
+    </script>
+    
+</div>
