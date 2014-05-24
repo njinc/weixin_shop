@@ -11,20 +11,20 @@ class ShopcartAction extends frontendAction {
 	
 	
     public function index(){
-     import('Think.ORG.Cart');// 导入分页类
-    $cart=new Cart();	
+        import('Think.ORG.Cart');// 导入分页类
+        $cart=new Cart();	
 
-	  // import('Think.ORG.Util.weixin');// 导入分页类
+	   // import('Think.ORG.Util.weixin');// 导入分页类
 	   
-	  //  $wechat = new wechat();// 实例化分页类 传入总记录数ss
-	  //  $wechat->responseMsg();
-	//  echo "<pre>";
-	  //var_dump($_SESSION['cart']);
-	 // echo "</pre>";
-	$this->assign('item',$_SESSION['cart']);
-	$this->assign('sumPrice',$cart->getPrice());
-	  $this->_config_seo();
-	  $this->display();
+	   //  $wechat = new wechat();// 实例化分页类 传入总记录数ss
+	   //  $wechat->responseMsg();
+	   //  echo "<pre>";
+	   //var_dump($_SESSION['cart']);
+	   // echo "</pre>";
+	   $this->assign('item',$_SESSION['cart']);
+	   $this->assign('sumPrice',$cart->getPrice());
+	   $this->_config_seo();
+	   $this->display();
     }
     
     public function add_cart()//添加进购物车

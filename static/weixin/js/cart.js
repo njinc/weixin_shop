@@ -4,7 +4,7 @@ function drop_cart_item(rec_id){
     var amount_span = $('#cart_amount');
     var cart_goods_kinds = $('#cart_goods_kinds');
    
-    $.post("index.php?m=Shopcart&a=remove_cart_item",{itemId:rec_id},function(data){
+    $.post("index.php?m=shopcart&a=remove_cart_item",{itemId:rec_id},function(data){
     	if(data.status==1)
     	{
     		window.location.reload(); 

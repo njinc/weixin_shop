@@ -6,8 +6,6 @@ class Cart{
 		}
 	}
 	
-
-
 	/*
 	添加商品
 	param int $id 商品主键

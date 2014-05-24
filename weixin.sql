@@ -13,6 +13,9 @@ File Encoding         : 65001
 Date: 2013-08-21 12:26:33
 */
 
+USE weixin;
+
+
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------

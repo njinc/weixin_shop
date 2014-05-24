@@ -112,6 +112,8 @@ class OrderAction extends userbaseAction {
 		$this->_config_seo();
 		$this->display();
 	}
+
+
 	public function jiesuan(){//结算
 		
 		
@@ -137,10 +139,10 @@ class OrderAction extends userbaseAction {
 			}
 		}
 		
-		//   $dingdanhao = date("Y-m-dH-i-s");
+		// $dingdanhao = date("Y-m-dH-i-s");
 		// $dingdanhao = str_replace("-","",$dingdanhao);
 		// $dingdanhao .= rand(1000,2000);
-		  import('Think.ORG.Cart');// 导入分页类
+		 import('Think.ORG.Cart');// 导入分页类
     	 $cart=new Cart();
     	 $sumPrice= $cart->getPrice();
     	 
@@ -181,19 +183,19 @@ class OrderAction extends userbaseAction {
 	
 		if(IS_POST&&count($_SESSION['cart'])>0)
 		{	
-			 import('Think.ORG.Cart');// 导入分页类
-             $cart=new Cart();	
+			import('Think.ORG.Cart');// 导入分页类
+            $cart=new Cart();	
 			$user_address=M('user_address');
 			$item_order=M('item_order');
 			$order_detail=M('order_detail');
 			$item_goods=M('item');
 			$this->visitor->info['id'];//用户ID
-		   $this->visitor->info['username'];//用户账号
+		    $this->visitor->info['username'];//用户账号
 		   
-		   //生成订单号
+		    //生成订单号
 		    $dingdanhao = date("Y-m-dH-i-s");
-		   $dingdanhao = str_replace("-","",$dingdanhao);
-		   $dingdanhao .= rand(1000,2000);
+		    $dingdanhao = str_replace("-","",$dingdanhao);
+		    $dingdanhao .= rand(1000,2000);
 		   
 		    $time=time();//订单添加时间
 			$address_options= $this->_post('address_options','intval');//地址  0：刚填的地址 大于0历史的地址
