@@ -2,18 +2,17 @@
 <html>  
 <body>  
    <p id="demo">点击这个按钮，获得您的坐标：</p>  
-   <button onclick="getLocation()">试一下</button>  
    <script>  
        var x=document.getElementById("demo");  
-       function getLocation(){  
+       (function getLocation(){  
          if (navigator.geolocation){  //判断是否支持地理定位  
               //如果支持，则运行getCurrentPosition()方法。  
               navigator.geolocation.getCurrentPosition(showPosition);  
           }else{  
               //如果不支持，则向用户显示一段消息  
-              x.innerHTML="Geolocation is not supported by this browser.";  
+              x.innerHTML="sorry，您的浏览器不支持获取地理位置。";  
           }  
-        }  
+        })();  
   
         //获取经纬度并显示  
         function showPosition(position){  
