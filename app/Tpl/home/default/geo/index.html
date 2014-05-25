@@ -1,24 +1,63 @@
-<!DOCTYPE html>  
-<html>  
-<body>  
-   <p id="demo">点击这个按钮，获得您的坐标：</p>  
-   <script>  
-       var x=document.getElementById("demo");  
-       (function getLocation(){  
-         if (navigator.geolocation){  //判断是否支持地理定位  
+<!DOCTYPE html>
+<html>
+<head>
+  <include file="public:headtop" />
+  <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=lK6tN7ZpmLWCuGTY5IDZTKig"></script>
+</head>
+
+<body>
+  <include file="public:head" />
+
+        <volist name="shop_address_list" id="vo">
+        <div class="order_address_list">
+      
+          <ul class="address_item">
+            <li class="particular">{$vo.address}</li>
+            <li class="contacts">联系人：{$vo.contacts}</li>
+            <li class="mobile">电 话：{$vo.mobile}</li>
+            <li class="geo" lng="{$vo.lng}" lat="{$vo.lat}">距离：计算中...</li>
+          </ul>
+
+        </div>
+        </volist>
+
+   <script type="text/javascript"> 
+
+        (function getLocation(){
+          if (navigator.geolocation){  //判断是否支持地理定位  
               //如果支持，则运行getCurrentPosition()方法。  
               navigator.geolocation.getCurrentPosition(showPosition);  
           }else{  
               //如果不支持，则向用户显示一段消息  
               x.innerHTML="sorry，您的浏览器不支持获取地理位置。";  
-          }  
-        })();  
+          } 
+        })();
+   
+ 
   
         //获取经纬度并显示  
         function showPosition(position){  
-            x.innerHTML="Latitude: " + position.coords.latitude +   
-            "<br />Longitude: " + position.coords.longitude;    
+          var self_lat = position.coords.latitude;
+          var self_lng = position.coords.longitude;
+
+          // 百度地图API功能
+          var map = new BMap.Map("allmap");
+          // map.centerAndZoom("重庆",12);                   // 初始化地图,设置城市和地图级别。
+
+          var pointA = new BMap.Point(self_lng, self_lat);  // 创建点坐标A
+
+            $(".geo").each(function(){
+              var lng = $(this).attr('lng');
+              var lat = $(this).attr('lat');
+
+              var pointB = new BMap.Point(parseFloat(lng),parseFloat(lat));  // 创建点坐标B--江北区
+              var distance = (map.getDistance(pointA,pointB)/1000).toFixed(2);
+              $(this).text('距离：' + distance +' 公里。');
+          }); 
         }  
     </script>  
 </body>  
 </html>  
+<include file="public:footer" />
+</body>
+</html>
