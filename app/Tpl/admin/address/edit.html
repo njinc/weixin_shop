@@ -4,6 +4,11 @@
 <script language="javascript">
 		new PCAS("Province","City","Area","{$info.Province}","{$info.City}","{$info.Area}");
 </script>
+<style type="text/css">
+	#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;}
+	#l-map{height:200px;width:100%;float:left;border-right:2px solid #bcbcbc;}
+</style>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=lK6tN7ZpmLWCuGTY5IDZTKig"></script>
 <div class="dialog_content">
 	<form id="info_form" name="info_form" action="{:u('address/edit')}" method="post">
 	<table width="100%" cellpadding="2" cellspacing="1" class="table_form">
@@ -48,12 +53,9 @@
 			<td><input type="text" name="ordid" id="ordid" class="input-text" size="10" value="{$info.ordid}"></td>
 		</tr>
 		<tr>
-			<th width="100">经 度 :</th>
-			<td><input type="text" value="{$info.lng}" name="lng" id="lng" class="input-text" size="20"></td>
-		</tr>
-		<tr>
-			<th widht="100">维 度 :</th>
-			<td><input type="text" value="{$info.lat}" name="lat" id="lat" class="input-text" size="20"></td>
+			<th colspan="2">
+			<div id="l-map"></div>
+			</th>
 		</tr>
 		<tr>
 			<th>{:L('enabled')} :</th>
@@ -68,25 +70,21 @@
 </div>
 <script>
 var check_name_url = "{:U('address/ajax_check_name', array('id'=>$info['id']))}";
+
+// 百度地图API功能
+var map = new BMap.Map("l-map");
+map.centerAndZoom("重庆",12);                   // 初始化地图,设置城市和地图级别。
+map.enableScrollWheelZoom();                            //启用滚轮放大缩小
+
+map.addEventListener("click", function(e){
+  document.getElementById("r-result").innerHTML = e.point.lng + ", " + e.point.lat;
+});
+
+
 $(function(){
+
 	$.formValidator.initConfig({formid:"info_form",autotip:true});
-/*	$("#name").formValidator({onshow:lang.please_input+'名称',onfocus:lang.please_input+'名称'}).inputValidator({min:1,onerror:lang.please_input+'名称'}).ajaxValidator({
-	    type : "get",
-		url : check_name_url,
-		datatype : "json",
-		async:'false',
-		success : function(result){	
-            if(result.status == 0){
-                return false;
-			}else{
-                return true;
-			}
-		},
-		onerror : '名称已存在',
-		onwait : lang.connecting_please_wait
-	}).defaultPassed();
-	*/
-$("#contacts").formValidator({onshow:'请填写联系人',onfocus:'请填写联系人'}).inputValidator({min:1,onerror:'请填写联系人'});
+	$("#contacts").formValidator({onshow:'请填写联系人',onfocus:'请填写联系人'}).inputValidator({min:1,onerror:'请填写联系人'});
 	$("#address").formValidator({onshow:'请填写详细地址',onfocus:'请填写详细地址'}).inputValidator({min:1,onerror:'请填写详细地址'});
 	$("#Province").formValidator({onshow:'请选择所在地区',onfocus:'请选择所在地区'}).inputValidator({min:1,onerror:'请选择所在地区'});
 	$('#info_form').ajaxForm({success:complate,dataType:'json'});
