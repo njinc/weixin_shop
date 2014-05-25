@@ -86,6 +86,9 @@ if(p_lng != 0 && p_lat != 0)
 	marker = new BMap.Marker(point);  // 创建标注
 	map.centerAndZoom(point, 12);
 	map.addOverlay(marker);
+}else
+{
+	map.centerAndZoom('广州', 12);
 }
 
 map.addEventListener("click", function(e){

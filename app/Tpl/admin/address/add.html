@@ -75,7 +75,8 @@ var check_name_url = "{:U('address/ajax_check_name')}";
 
 
 // 百度地图API功能
-var map = init_baidu_map("l-map", "广州");
+var map = init_baidu_map("l-map");
+map.centerAndZoom('广州', 12);
 var p_lng = 0, p_lat = 0;
 var marker = null
 
