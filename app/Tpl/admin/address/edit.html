@@ -48,6 +48,14 @@
 			<td><input type="text" name="ordid" id="ordid" class="input-text" size="10" value="{$info.ordid}"></td>
 		</tr>
 		<tr>
+			<th width="100">经 度 :</th>
+			<td><input type="text" name="lnd" id="lnd" class="input-text" size="20"></td>
+		</tr>
+		<tr>
+			<th widht="100">维 度 :</th>
+			<td><input type="text" name="lat" id="lat" class="input-text" size="20"></td>
+		</tr>
+		<tr>
 			<th>{:L('enabled')} :</th>
 			<td>
 				<label><input type="radio" name="status" class="radio_style" value="1" <if condition="$info.status eq 1"> checked="checked"</if>> {:L('yes')}</label>
