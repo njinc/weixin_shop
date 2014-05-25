@@ -5,6 +5,10 @@
 <script language="javascript">
 		new PCAS("Province","City","Area","","","");
 </script>
+<style type="text/css">
+	#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;}
+	#l-map{height:240px;width:100%;float:left;border-right:2px solid #bcbcbc;}
+</style>
 <div class="dialog_content">
 	<form id="info_form" name="info_form" action="{:u('address/add')}" method="post">
 	<table width="100%" cellpadding="2" cellspacing="1" class="table_form">
@@ -49,12 +53,10 @@
 			<td><input type="text" name="ordid" id="ordid" class="input-text" size="10"></td>
 		</tr>
 		<tr>
-			<th width="100">经 度 :</th>
-			<td><input type="text" name="lng" id="lng" class="input-text" size="20"></td>
-		</tr>
-		<tr>
-			<th widht="100">维 度 :</th>
-			<td><input type="text" name="lat" id="lat" class="input-text" size="20"></td>
+			<th width="100">地理位置：</th>
+			<td>
+				<div id="l-map"></div>
+			</td>
 		</tr>
 		<tr>
 			<th>{:L('enabled')} :</th>
@@ -64,28 +66,37 @@
 			</td>
 		</tr>
 	</table>
+	<input type="hidden" id="lng" name="lng"	/>
+	<input type="hidden" id="lat" name="lat" />
 	</form>
 </div>
 <script>
 var check_name_url = "{:U('address/ajax_check_name')}";
+
+
+// 百度地图API功能
+var map = init_baidu_map("l-map", "广州");
+var p_lng = 0, p_lat = 0;
+var marker = null
+
+map.addEventListener("click", function(e){
+
+	if(marker != null)
+	{
+		map.removeOverlay(marker);
+	}
+
+	p_lng = e.point.lng;
+	p_lat = e.point.lat;
+  	marker = new BMap.Marker(new BMap.Point(p_lng, p_lat));  // 创建标注
+	map.addOverlay(marker);              // 将标注添加到地图中
+
+	$('#lng').val(p_lng);
+	$('#lat').val(p_lat);
+});
+
 $(function(){
 	$.formValidator.initConfig({formid:"info_form",autotip:true});
-	/*$("#name").formValidator({onshow:lang.please_input+'名称',onfocus:lang.please_input+'名称'}).inputValidator({min:1,onerror:lang.please_input+'名称'}).ajaxValidator({
-	    type : "get",
-		url : check_name_url,
-		datatype : "json",
-		async:'false',
-		success : function(result){	
-            if(result.status == 0){
-                return false;
-			}else{
-                return true;
-			}
-		},
-		onerror : '名称已存在',
-		onwait : lang.connecting_please_wait
-	});
-	*/
 	$("#contacts").formValidator({onshow:'请填写联系人',onfocus:'请填写联系人'}).inputValidator({min:1,onerror:'请填写联系人'});
 	$("#address").formValidator({onshow:'请填写详细地址',onfocus:'请填写详细地址'}).inputValidator({min:1,onerror:'请填写详细地址'});
 	$("#Province").formValidator({onshow:'请选择所在地区',onfocus:'请选择所在地区'}).inputValidator({min:1,onerror:'请选择所在地区'});

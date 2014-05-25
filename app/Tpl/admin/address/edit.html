@@ -6,9 +6,9 @@
 </script>
 <style type="text/css">
 	#allmap {width: 100%;height: 100%;overflow: hidden;margin:0;}
-	#l-map{height:200px;width:100%;float:left;border-right:2px solid #bcbcbc;}
+	#l-map{height:240px;width:100%;float:left;border-right:2px solid #bcbcbc;}
 </style>
-<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=lK6tN7ZpmLWCuGTY5IDZTKig"></script>
+
 <div class="dialog_content">
 	<form id="info_form" name="info_form" action="{:u('address/edit')}" method="post">
 	<table width="100%" cellpadding="2" cellspacing="1" class="table_form">
@@ -66,25 +66,42 @@
 			</td>
 		</tr>
 	</table>
+	<input type="hidden" id="lng" name="lng"	/>
+	<input type="hidden" id="lat" name="lat" />
 	<input type="hidden" name="id" value="{$info.id}" />
 	</form>
 </div>
+
 <script>
 var check_name_url = "{:U('address/ajax_check_name', array('id'=>$info['id']))}";
 
 // 百度地图API功能
-var map = new BMap.Map("l-map");
-map.centerAndZoom("广州",12);                   // 初始化地图,设置城市和地图级别。
-map.enableScrollWheelZoom();                            //启用滚轮放大缩小
-map.addControl(new BMap.NavigationControl());               // 添加平移缩放控件
-map.addControl(new BMap.ScaleControl());                    // 添加比例尺控件
-map.addControl(new BMap.OverviewMapControl());              //添加缩略地图控件
+var map = init_baidu_map("l-map", "广州");
+var p_lng = {$info.lng}, p_lat = {$info.lat};
+var marker = null;
+
+if(p_lng != 0 && p_lat != 0)
+{
+	var point = new BMap.Point(p_lng, p_lat);
+	marker = new BMap.Marker(point);  // 创建标注
+	map.centerAndZoom(point, 12);
+	map.addOverlay(marker);
+}
 
 map.addEventListener("click", function(e){
 
-  var marker1 = new BMap.Marker(new BMap.Point(e.point.lng, e.point.lat));  // 创建标注
-	map.addOverlay(marker1);              // 将标注添加到地图中
+	if(marker != null)
+	{
+		map.removeOverlay(marker);
+	}
 
+	p_lng = e.point.lng;
+	p_lat = e.point.lat;
+  	marker = new BMap.Marker(new BMap.Point(p_lng, p_lat));  // 创建标注
+	map.addOverlay(marker);              // 将标注添加到地图中
+
+	$('#lng').val(p_lng);
+	$('#lat').val(p_lat);
 });
 
 
