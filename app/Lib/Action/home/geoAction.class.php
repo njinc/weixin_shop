@@ -2,5 +2,6 @@
 class geoAction extends frontendAction {
 
 	public function index() {
+		$this->display();
 	}
 }
