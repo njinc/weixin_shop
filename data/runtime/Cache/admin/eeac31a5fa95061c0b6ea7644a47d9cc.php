@@ -5,6 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	
 	<link href="__STATIC__/css/admin/style.css" rel="stylesheet"/>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=lK6tN7ZpmLWCuGTY5IDZTKig"></script>
 	<title><?php echo L('website_manage');?></title>
 	<script>
 	var URL = '__URL__';

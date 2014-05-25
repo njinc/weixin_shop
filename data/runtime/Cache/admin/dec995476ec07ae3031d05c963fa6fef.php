@@ -5,6 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 	
 	<link href="__STATIC__/css/admin/style.css" rel="stylesheet"/>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=lK6tN7ZpmLWCuGTY5IDZTKig"></script>
 	<title><?php echo L('website_manage');?></title>
 	<script>
 	var URL = '__URL__';
@@ -27,6 +28,9 @@
     </div>
 </div><?php endif; ?>
 <script charset="utf-8" src="__STATIC__/weixin/js/jquery.js" type="text/javascript"></script>
+<link rel="stylesheet" href="__STATIC__/css/admin/dialog.min.css" />
+<script charset="utf-8" src="__STATIC__/js/jquery/plugins/jquery-drag.min.js"></script>
+<script charset="utf-8" src="__STATIC__/js/jquery/plugins/jquery-dialog.min.js"></script>
 <!--标签-->
 <div class="pad_lr_10" >
 

@@ -49,6 +49,14 @@
 			<td><input type="text" name="ordid" id="ordid" class="input-text" size="10"></td>
 		</tr>
 		<tr>
+			<th width="100">经 度 :</th>
+			<td><input type="text" name="lng" id="lng" class="input-text" size="20"></td>
+		</tr>
+		<tr>
+			<th widht="100">维 度 :</th>
+			<td><input type="text" name="lat" id="lat" class="input-text" size="20"></td>
+		</tr>
+		<tr>
 			<th><?php echo L('enabled');?> :</th>
 			<td>
 				<label><input type="radio" name="status" class="radio_style" value="1" checked="checked"> <?php echo L('yes');?></label>

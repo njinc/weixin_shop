@@ -36,12 +36,11 @@ $(function(){
 </head>
 
 <body>
-
-
-
+<!--
 <div id="head">
 	<img height="50" src="__PUBLIC__/images/store_logo.jpg">
 </div>
+-->
 <div id="nav">
 	<ul class="navlist">
     	<li id="n_0">
@@ -55,9 +54,9 @@ $(function(){
             
             </ul>
         </li>
-        <li class="r active" id="n_1"><a href="<?php echo U('Index/index');?>"><span></span></a></li>
-        <li class="r" id="n_2"><a href="<?php echo U('User/index');?>"><span></span></a></li>
-        <li class="r" id="n_3"><a href="<?php echo U('Shopcart/index');?>"><span></span></a><i></i></li>
+        <li class="r active" id="n_1"><a href="<?php echo U('index/index');?>"><span></span></a></li>
+        <li class="r" id="n_2"><a href="<?php echo U('user/index');?>"><span></span></a></li>
+        <li class="r" id="n_3"><a href="<?php echo U('shopcart/index');?>"><span></span></a><i></i></li>
     </ul>
     <script type="text/javascript">
     	$(".navlist > li#n_0").click(function(){
@@ -74,9 +73,6 @@ $(function(){
     </script>
     
 </div>
-
-
-
 
 
 <div class="banner">
@@ -119,41 +115,6 @@ var t2=new TouchSlider({id:'sliderlist', speed:600, timeout:6000, before:functio
 	}});
 </script>
 <div id="content">
-   <!-- <div class="module_special">
-        <h2 class="common_title veins2">
-            <div class="ornament1"></div>
-            <div class="ornament2"></div>
-          <!--  <span class="ico1">
-                <span class="ico2">最新团购</span>
-            </span>
-        </h2>
-        <div class="wrap">
-            <div class="wrap_child">
-                <div class="group_major">
-                    <ul class="list">
-                        <li>
-                            <div class="pic">
-                                <a href="<?php echo U('Item/tuan');?>">
-                                    <img src="__STATIC__/weixin/images/goods1.jpg">
-                                </a>
-                            </div>
-                            <div class="good_content">
-                                <h3>
-                                    <a target="_blank" href="<?php echo U('Item/tuan');?>">7月团购火热</a>
-                                </h3>
-                                <p>
-                                    <span> 团购价:&nbsp;</span>¥15.00
-                                </p>
-                                <div class="time">
-                                    剩余:&nbsp;19天15小时
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>-->
     <div class="module_special">
         <h2 class="common_title veins2">
             <div class="ornament1"></div>
@@ -168,16 +129,16 @@ var t2=new TouchSlider({id:'sliderlist', speed:600, timeout:6000, before:functio
                     <ul class="list">
                         <?php if(is_array($tuijian)): $i = 0; $__LIST__ = $tuijian;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$item): $mod = ($i % 2 );++$i;?><li>
                     <div class="pic">
-                     <a href="<?php echo U('Item/index',array('id'=>$item['id']));?>"><img  src="<?php echo attach(get_thumb($item['img'], '_b'), 'item');?>"></a>
+                     <a href="<?php echo U('item/index',array('id'=>$item['id']));?>"><img  src="<?php echo attach(get_thumb($item['img'], '_b'), 'item');?>"></a>
                     </div>
                    <div class="good_content">
                     <h3>
-                    <a  href="<?php echo U('Item/index',array('id'=>$item['id']));?>"><?php echo ($item["title"]); ?></a>
+                    <a  href="<?php echo U('item/index',array('id'=>$item['id']));?>"><?php echo ($item["title"]); ?></a>
                    </h3>
                     <p>¥<?php echo ($item["price"]); ?></p>
                     </div>
                     <span class="show_good">
-                      <a  href="<?php echo U('Item/index',array('id'=>$item['id']));?>"></a>
+                      <a  href="<?php echo U('item/index',array('id'=>$item['id']));?>"></a>
                     </span>
                       </li><?php endforeach; endif; else: echo "" ;endif; ?>
                        
@@ -195,21 +156,21 @@ var t2=new TouchSlider({id:'sliderlist', speed:600, timeout:6000, before:functio
             </span>
         </h2>
         <div class="wrap">
-            <div class="wrap_child">
+            <div class="wrap_child news">
                 <div class="major">
                     <ul class="list">
                      <?php if(is_array($news)): $i = 0; $__LIST__ = $news;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$item): $mod = ($i % 2 );++$i;?><li>
                     <div class="pic">
-                     <a href="<?php echo U('Item/index',array('id'=>$item['id']));?>"><img  src="<?php echo attach(get_thumb($item['img'], '_b'), 'item');?>"></a>
+                     <a href="<?php echo U('item/index',array('id'=>$item['id']));?>"><img  src="<?php echo attach(get_thumb($item['img'], '_b'), 'item');?>"></a>
                     </div>
                    <div class="good_content">
                     <h3>
-                    <a  href="<?php echo U('Item/index',array('id'=>$item['id']));?>"><?php echo ($item["title"]); ?></a>
+                    <a  href="<?php echo U('item/index',array('id'=>$item['id']));?>"><?php echo ($item["title"]); ?></a>
                    </h3>
                     <p>¥<?php echo ($item["price"]); ?></p>
                     </div>
                     <span class="show_good">
-                      <a  href="<?php echo U('Item/index',array('id'=>$item['id']));?>"></a>
+                      <a  href="<?php echo U('item/index',array('id'=>$item['id']));?>"></a>
                     </span>
                       </li><?php endforeach; endif; else: echo "" ;endif; ?>
                       
@@ -227,8 +188,8 @@ var t2=new TouchSlider({id:'sliderlist', speed:600, timeout:6000, before:functio
         <a href="<?php echo U('index/index');?>">商城首页</a> | <a href="<?php echo U('user/index');?>">会员中心</a> | <a href="#">品牌介绍</a>
     </p>
     <div style="height:40px; background:#fff; padding:0; overflow:hidden;">
-        <div style="float:left; margin:5px 10px 0 0; display:inline;"><img height="20" src="__STATIC__/weixin/images/logo.png"></div>
-        <div style="line-height:40px; height:40px; display:inline-block; margin-left:10px; float:right; color:#aaa; font-size:14px;">果果科技</div>
+        <div style="float:left; margin:5px 10px 0 0; display:inline;"><img height="20" src="__STATIC__/weixin/images/logo1.png"></div>
+        <div style="line-height:40px; height:40px; display:inline-block; margin-left:10px; float:right; color:#aaa; font-size:14px;"></div>
     </div>
 </div>
 
