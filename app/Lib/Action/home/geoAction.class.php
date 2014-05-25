@@ -1,5 +1,5 @@
 <?php
-class indexAction extends frontendAction {
+class geoAction extends frontendAction {
 
 	public function index() {
 	}
