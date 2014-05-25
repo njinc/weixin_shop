@@ -30,14 +30,14 @@ a.red,a.red:link,a.red:link,a.red:visited{color:#FF6060;}
 
 /*------------------登陆页面部分开始-------------------*/
 .login{width:393px; height:auto; margin-left:auto; margin-right:auto; text-align:left; padding-top:150px;}
-.login-center{width:393px; background:url(/static/images/admin/login_bg.jpg) repeat-y; padding-left:20px;}
+.login-center{width:393px; background:url(../../images/admin/login_bg.jpg) repeat-y; padding-left:20px;}
 .login-center ul li{clear:both; padding-bottom:10px;}
 .remember-me{margin:0; padding:0; float:left;}
 .remember-me2{line-height:1.2em;}
 .input-text1{height:30px; line-height:37px; width:337px; border:1px solid #cccccc; border-radius:5px; -moz-box-shadow:2px 2px 2px #ededed inset; /* For Firefox3.6+ */-webkit-box-shadow:2px 2px 3px #ededed inset;/* For Chrome5+, Safari5+ */box-shadow:2px 2px 3px #ededed inset; /* For Latest Opera */ color:#333; font-size:14px;}
 .input-text1:hover{border:1px solid #c2dde5;}
-.login-button{ background:url(/static/images/admin//login-button.jpg) no-repeat; width:393px; height:58px; clear:both;cursor:pointer;}
-.login-button:hover{background:url(/static/images/admin//login-button2.jpg) no-repeat;}
+.login-button{ background:url(../../images/admin/login-button.jpg) no-repeat; width:393px; height:58px; clear:both;cursor:pointer;}
+.login-button:hover{background:url(../../images/admin/login-button2.jpg) no-repeat;}
 /*------------------登陆页面部分结束-------------------*/
 
 
