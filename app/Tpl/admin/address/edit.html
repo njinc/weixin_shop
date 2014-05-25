@@ -53,9 +53,10 @@
 			<td><input type="text" name="ordid" id="ordid" class="input-text" size="10" value="{$info.ordid}"></td>
 		</tr>
 		<tr>
-			<th colspan="2">
-			<div id="l-map"></div>
-			</th>
+			<th width="100">地理位置：</th>
+			<td>
+				<div id="l-map"></div>
+			</td>
 		</tr>
 		<tr>
 			<th>{:L('enabled')} :</th>
@@ -73,11 +74,17 @@ var check_name_url = "{:U('address/ajax_check_name', array('id'=>$info['id']))}"
 
 // 百度地图API功能
 var map = new BMap.Map("l-map");
-map.centerAndZoom("重庆",12);                   // 初始化地图,设置城市和地图级别。
+map.centerAndZoom("广州",12);                   // 初始化地图,设置城市和地图级别。
 map.enableScrollWheelZoom();                            //启用滚轮放大缩小
+map.addControl(new BMap.NavigationControl());               // 添加平移缩放控件
+map.addControl(new BMap.ScaleControl());                    // 添加比例尺控件
+map.addControl(new BMap.OverviewMapControl());              //添加缩略地图控件
 
 map.addEventListener("click", function(e){
-  document.getElementById("r-result").innerHTML = e.point.lng + ", " + e.point.lat;
+
+  var marker1 = new BMap.Marker(new BMap.Point(e.point.lng, e.point.lat));  // 创建标注
+	map.addOverlay(marker1);              // 将标注添加到地图中
+
 });
 
 
